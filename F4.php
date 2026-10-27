@@ -24,14 +24,7 @@ class F4 extends Monoplaza
 
     private string $paisCategoria;
 
-    public function __construct(
-        string $piloto,
-        string $nacionalidad,
-        int $numero,
-        string $escuderia,
-        int $puntos,
-        string $paisCategoria
-    ) {
+    public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, string $paisCategoria) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if (trim($paisCategoria) === '') {
             throw new InvalidArgumentException('El país de la categoría F4 es obligatorio.');

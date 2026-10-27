@@ -23,14 +23,7 @@ class F3 extends Monoplaza
 
     private string $academia;
 
-    public function __construct(
-        string $piloto,
-        string $nacionalidad,
-        int $numero,
-        string $escuderia,
-        int $puntos,
-        string $academia
-    ) {
+    public function __construct( string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, string $academia) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if (trim($academia) === '') {
             throw new InvalidArgumentException('La academia del piloto es obligatoria.');

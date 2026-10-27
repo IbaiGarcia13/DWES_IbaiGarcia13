@@ -22,14 +22,7 @@ class FAcademy extends Monoplaza
 
     private int $potenciaMaxima;
 
-    public function __construct(
-        string $piloto,
-        string $nacionalidad,
-        int $numero,
-        string $escuderia,
-        int $puntos,
-        int $potenciaMaxima
-    ) {
+    public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, int $potenciaMaxima) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if ($potenciaMaxima < 1) {
             throw new InvalidArgumentException('La potencia máxima del motor debe ser positiva.');

@@ -56,28 +56,39 @@ class OpenF1Api
     private function solicitar(string $recurso, array $parametros): array
     {
         $url = self::BASE_URL . $recurso . '?' . http_build_query($parametros);
-        $curl = curl_init($url);
-        if ($curl === false) {
-            throw new RuntimeException('No se pudo iniciar la conexión con OpenF1.');
-        }
 
-        curl_setopt_array($curl, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_TIMEOUT => 15,
-            CURLOPT_HTTPHEADER => ['Accept: application/json'],
+        $contexto = stream_context_create([
+            'http' => [
+                'method' => 'GET',
+                'header' => 'Accept: application/json',
+                'timeout' => 15,
+            ],
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ],
         ]);
 
-        $respuesta = curl_exec($curl);
+        $respuesta = @file_get_contents($url, false, $contexto);
+
         if ($respuesta === false) {
-            $error = curl_error($curl);
-            curl_close($curl);
-            throw new RuntimeException('Error al consultar OpenF1: ' . $error);
+            throw new RuntimeException('Error al consultar OpenF1: no se pudo conectar con la API.');
         }
 
-        $estado = (int) curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
-        curl_close($curl);
-        if ($estado < 200 || $estado >= 300) {
+        // Obtener el código HTTP de la respuesta (Correción error php con el nuevo XAMPP)
+        $cabeceras = function_exists('http_get_last_response_headers')
+            ? http_get_last_response_headers()
+            : [];
+
+        $estado = 0;
+        foreach ($cabeceras as $cabecera) {
+            if (preg_match('#^HTTP/\S+\s+(\d+)#', $cabecera, $coincidencias)) {
+                $estado = (int) $coincidencias[1];
+                break;
+            }
+        }
+
+        if ($estado > 0 && ($estado < 200 || $estado >= 300)) {
             throw new RuntimeException('OpenF1 respondió con el código HTTP ' . $estado . '.');
         }
 

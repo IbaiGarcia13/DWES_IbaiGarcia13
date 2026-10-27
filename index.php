@@ -33,7 +33,7 @@ $categorias = [
                     <article class="categoria">
                         <h3><?= htmlspecialchars($categoria['nombre'], ENT_QUOTES, 'UTF-8') ?></h3>
                         <p><?= $categoria['pilotos'] ?> pilotos</p>
-                        <p><?= $categoria['rapida'] ? 'La vuelta rápida puede sumar un punto.' : 'La vuelta rápida no suma puntos.' ?></p>
+                        <p><?= $categoria['rapida'] ? 'La vuelta rápida puede sumar un punto.' : 'La vuelta rápida no suma puntos :(' ?></p>
                     </article>
                 <?php endforeach; ?>
             </div>

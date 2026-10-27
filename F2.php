@@ -22,14 +22,7 @@ class F2 extends Monoplaza
 
     private bool $tienePuntosSuperlicencia;
 
-    public function __construct(
-        string $piloto,
-        string $nacionalidad,
-        int $numero,
-        string $escuderia,
-        int $puntos,
-        bool $tienePuntosSuperlicencia
-    ) {
+    public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, bool $tienePuntosSuperlicencia) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         $this->tienePuntosSuperlicencia = $tienePuntosSuperlicencia;
     }
@@ -42,7 +35,7 @@ class F2 extends Monoplaza
     public function subirCategoria(string $patrocinadorPrincipal): F1
     {
         if (!$this->tienePuntosSuperlicencia) {
-            throw new LogicException('El piloto todavía no tiene los puntos necesarios para la superlicencia.');
+            throw new LogicException('El piloto todavía no tiene los puntos necesarios para la superlicencia :(');
         }
 
         return new F1(

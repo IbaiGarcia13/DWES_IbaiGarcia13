@@ -22,14 +22,7 @@ class F1 extends Monoplaza
 
     private string $patrocinadorPrincipal;
 
-    public function __construct(
-        string $piloto,
-        string $nacionalidad,
-        int $numero,
-        string $escuderia,
-        int $puntos,
-        string $patrocinadorPrincipal
-    ) {
+    public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, string $patrocinadorPrincipal) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if (trim($patrocinadorPrincipal) === '') {
             throw new InvalidArgumentException('El patrocinador principal es obligatorio.');

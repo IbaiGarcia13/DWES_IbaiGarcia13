@@ -14,13 +14,7 @@ abstract class Monoplaza
     protected string $escuderia;
     protected int $puntos;
 
-    public function __construct(
-        string $piloto,
-        string $nacionalidad,
-        int $numero,
-        string $escuderia,
-        int $puntos
-    ) {
+    public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos) {
         if (trim($piloto) === '' || trim($nacionalidad) === '' || trim($escuderia) === '') {
             throw new InvalidArgumentException('El piloto, la nacionalidad y la escudería son obligatorios.');
         }
