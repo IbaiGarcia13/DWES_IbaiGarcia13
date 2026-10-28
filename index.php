@@ -21,7 +21,7 @@ $categorias = [
 <body>
     <main class="contenedor">
         <header class="cabecera">
-            <p class="etiqueta">FIA · Gestión de categorías</p>
+            <p class="etiqueta">FIA · Gestión de categorías [ Ibai García ]</p>
             <h1>Monoplazas</h1>
             <p class="subtitulo">Puntos, pilotos y ascensos en las categorías de Fórmula.</p>
         </header>
