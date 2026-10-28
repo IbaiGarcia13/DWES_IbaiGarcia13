@@ -22,16 +22,19 @@ class F2 extends Monoplaza
 
     private bool $tienePuntosSuperlicencia;
 
+    // Constructor que inicializa los datos de F2 y si cuenta con puntos de superlicencia
     public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, bool $tienePuntosSuperlicencia) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         $this->tienePuntosSuperlicencia = $tienePuntosSuperlicencia;
     }
 
+    // Indica si el piloto tiene los puntos de superlicencia para ascender
     public function tienePuntosSuperlicencia(): bool
     {
         return $this->tienePuntosSuperlicencia;
     }
 
+    // Asciende el piloto a F1 si cumple la superlicencia, recibiendo el patrocinador principal
     public function subirCategoria(string $patrocinadorPrincipal): F1
     {
         if (!$this->tienePuntosSuperlicencia) {

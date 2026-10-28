@@ -14,6 +14,7 @@ abstract class Monoplaza
     protected string $escuderia;
     protected int $puntos;
 
+    // Constructor que inicializa y valida los datos base del monoplaza
     public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos) {
         if (trim($piloto) === '' || trim($nacionalidad) === '' || trim($escuderia) === '') {
             throw new InvalidArgumentException('El piloto, la nacionalidad y la escudería son obligatorios.');
@@ -32,11 +33,13 @@ abstract class Monoplaza
         $this->puntos = $puntos;
     }
 
+    // Comprueba si una posición está dentro del rango de pilotos de la categoría
     public function posicionValida(int $posicion): bool
     {
         return $posicion >= 1 && $posicion <= static::NUMERO_PILOTOS;
     }
 
+    // Suma puntos al piloto según su posición final y si logró vuelta rápida en el top 10
     public function otorgarPuntos(int $posicion, bool $vueltaRapida = false): void
     {
         if (!$this->posicionValida($posicion)) {
@@ -53,26 +56,31 @@ abstract class Monoplaza
         $this->puntos += $puntosObtenidos;
     }
 
+    // Devuelve el nombre del piloto
     public function getPiloto(): string
     {
         return $this->piloto;
     }
 
+    // Devuelve la nacionalidad del piloto
     public function getNacionalidad(): string
     {
         return $this->nacionalidad;
     }
 
+    // Devuelve el número del monoplaza
     public function getNumero(): int
     {
         return $this->numero;
     }
 
+    // Devuelve la escudería del piloto
     public function getEscuderia(): string
     {
         return $this->escuderia;
     }
 
+    // Devuelve la cantidad de puntos acumulados
     public function getPuntos(): int
     {
         return $this->puntos;

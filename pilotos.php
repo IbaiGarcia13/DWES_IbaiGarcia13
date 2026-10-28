@@ -13,6 +13,7 @@ try {
     $error = $exception->getMessage();
 }
 
+// Sanitiza cadenas de texto para imprimirlas de forma segura en HTML
 function escapar(string $valor): string
 {
     return htmlspecialchars($valor, ENT_QUOTES, 'UTF-8');

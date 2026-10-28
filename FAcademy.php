@@ -22,6 +22,8 @@ class FAcademy extends Monoplaza
 
     private int $potenciaMaxima;
 
+    // Constructor que inicializa los datos de FAcademy y la potencia máxima en Caballos de Vapor (CV)
+    // Constructor que inicializa los datos de FAcademy y la potencia máxima en CV
     public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, int $potenciaMaxima) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if ($potenciaMaxima < 1) {
@@ -31,11 +33,13 @@ class FAcademy extends Monoplaza
         $this->potenciaMaxima = $potenciaMaxima;
     }
 
+    // Devuelve la potencia máxima del motor en caballos de vapor (CV)
     public function getPotenciaMaxima(): int
     {
         return $this->potenciaMaxima;
     }
 
+    // Asciende al piloto a F4 recibiendo el país de la categoría
     public function subirCategoria(string $paisCategoria): F4
     {
         return new F4(

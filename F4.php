@@ -24,6 +24,7 @@ class F4 extends Monoplaza
 
     private string $paisCategoria;
 
+    // Constructor que inicializa los datos de F4 y el país de la competición
     public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, string $paisCategoria) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if (trim($paisCategoria) === '') {
@@ -33,11 +34,13 @@ class F4 extends Monoplaza
         $this->paisCategoria = $paisCategoria;
     }
 
+    // Devuelve el país organizador de la categoría F4
     public function getPaisCategoria(): string
     {
         return $this->paisCategoria;
     }
 
+    // Asciende al piloto a F3 recibiendo el nombre de la academia
     public function subirCategoria(string $academia): F3
     {
         return new F3(
