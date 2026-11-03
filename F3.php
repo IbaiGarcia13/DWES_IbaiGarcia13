@@ -23,7 +23,6 @@ class F3 extends Monoplaza
 
     private string $academia;
 
-    // Constructor que inicializa los datos de F3 y la academia a la que pertenece
     public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, string $academia) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if (trim($academia) === '') {
@@ -33,13 +32,11 @@ class F3 extends Monoplaza
         $this->academia = $academia;
     }
 
-    // Devuelve la academia de desarrollo del piloto
     public function getAcademia(): string
     {
         return $this->academia;
     }
 
-    // Asciende al piloto a F2 recibiendo si cuenta con puntos de superlicencia
     public function subirCategoria(bool $tienePuntosSuperlicencia): F2
     {
         return new F2(

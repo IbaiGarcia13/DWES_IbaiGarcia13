@@ -22,7 +22,6 @@ class F1 extends Monoplaza
 
     private string $patrocinadorPrincipal;
 
-    // Constructor que inicializa los datos de F1 y su patrocinador principal
     public function __construct(string $piloto, string $nacionalidad, int $numero, string $escuderia, int $puntos, string $patrocinadorPrincipal) {
         parent::__construct($piloto, $nacionalidad, $numero, $escuderia, $puntos);
         if (trim($patrocinadorPrincipal) === '') {
@@ -32,13 +31,11 @@ class F1 extends Monoplaza
         $this->patrocinadorPrincipal = $patrocinadorPrincipal;
     }
 
-    // Devuelve el patrocinador principal de F1
     public function getPatrocinadorPrincipal(): string
     {
         return $this->patrocinadorPrincipal;
     }
 
-    // Al ser la máxima categoría, no asciende a ninguna otra y devuelve null
     public function subirCategoria(): ?Monoplaza
     {
         return null;

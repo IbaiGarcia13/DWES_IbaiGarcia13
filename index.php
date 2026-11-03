@@ -10,6 +10,7 @@ $categorias = [
     ['nombre' => 'F Academy', 'pilotos' => 18, 'rapida' => true],
 ];
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
